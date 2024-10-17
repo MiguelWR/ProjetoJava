@@ -1,0 +1,20 @@
+Loja de carros(Ideia INICIAL):
+Objetivo do grupo é criar uma loja de carros. Vai ser possível acessar a ficha técnica de cada carro
+(Portas, Cor, Potência, Ano, Cilíndros, Preço) e efetuar a compra dele com o saldo do Cliente.
+Cliente terá seus dados(Nome, Idade, Saldo, CPF).
+Concessionária terá seus dados(Nome, Lucro(somente ADM terá acesso), CNPJ, Estoque).
+Compra será uma classe abstrata(Transferencia, Debito, Situacao).
+
+Classes:
+Concessionária
+Cliente
+Compra(Abstrata)
+Carro(Superclasse)
+Kwid(Subclasse)
+Sandero(Subclasse)
+Chevette(Subclasse)
+Focus(Subclasse)
+Celta(Subclasse)
+Kombi(Subclasse)
+Fusca(Subclasse)
+HB20(Subclasse)
