@@ -1,7 +1,7 @@
 public class Concessionaria {
     private String nome;
     private double lucro;
-    private int cnpj;
+    private String cnpj;
     private int estoque;
 
     public Concessionaria(String nome, double lucro, int cnpj, int estoque){
