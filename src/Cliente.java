@@ -2,7 +2,7 @@ public class Cliente {
     private String nome;
     private int idade;
     private double saldo;
-    private int cpf;
+    private String cpf;
 
     public Cliente(String nome, int idade, double saldo, int cpf){
         this.nome = nome;
