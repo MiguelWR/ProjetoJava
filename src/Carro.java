@@ -37,7 +37,6 @@ public class Carro {
         return ano;
     }
 
-
     public void setPortas(int portas){
         this.portas = portas;
     }

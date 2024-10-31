@@ -24,6 +24,7 @@ public String getNome(){
     public int getEstoque(){
         return estoque;
     }
+    
     public void setNome(String nome){
         this.nome = nome;
     }
