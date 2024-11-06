@@ -31,6 +31,9 @@ public class Carro {
     public void setValor(double valor) { this.valor = valor; }
 
     public void exibirDetalhes() {
-        System.out.println("Carro: " + cor + ", " + portas + " portas, " + cavalos + " cavalos, ano " + ano);
+        System.out.println("Carro: " + cor + ", " + ano + "ano");
+    }
+    public void fichaTecnica() {
+        System.out.println("Carro: " + cor + ", " + portas + " portas, " + cavalos + " cavalos, ano " + ano + ", cilindros: " + cilindros + ", valor: R$" + valor);
     }
 }

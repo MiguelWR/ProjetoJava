@@ -15,6 +15,11 @@ public class Concessionaria {
         this.carros = new ArrayList<>();
     }
 
+    public void adicionarCarro(Carro carro) {
+        this.carros.add(carro);
+        this.estoque++;
+    }
+
     // GETs e SETs
     public String getNome() { return nome; }
     public double getLucro() { return lucro; }

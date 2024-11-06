@@ -6,4 +6,9 @@ public class HB20 extends Carro{
     public void exibirDetalhes() {
         System.out.println("HB20: " + cor + ", ano " + ano);
     }
+
+    @Override
+    public void fichaTecnica() {
+        System.out.println("HB20: " + cor + ", " + portas + " portas, " + cavalos + " cavalos, ano " + ano + ", cilindros: " + cilindros + ", valor: R$" + valor);
+    }
 }

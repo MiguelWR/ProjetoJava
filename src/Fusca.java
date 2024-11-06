@@ -6,4 +6,9 @@ public class Fusca extends Carro {
     public void exibirDetalhes() {
         System.out.println("Fusca Clássico: " + cor + ", ano " + ano);
     }
+
+    @Override
+    public void fichaTecnica() {
+        System.out.println("Fusca: " + cor + ", " + portas + " portas, " + cavalos + " cavalos, ano " + ano + ", cilindros: " + cilindros + ", valor: R$" + valor);
+    }
 }

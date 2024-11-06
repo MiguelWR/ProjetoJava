@@ -6,4 +6,9 @@ public class Kwid extends Carro{
     public void exibirDetalhes() {
         System.out.println("Kwid: " + cor + ", ano " + ano);
     }
+
+    @Override
+    public void fichaTecnica() {
+        System.out.println("Kwid: " + cor + ", " + portas + " portas, " + cavalos + " cavalos, ano " + ano + ", cilindros: " + cilindros + ", valor: R$" + valor);
+    }
 }

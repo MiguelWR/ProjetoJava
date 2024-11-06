@@ -5,4 +5,9 @@ public class Focus extends Carro{
     public void exibirDetalhes() {
         System.out.println("Focus: " + cor + ", ano " + ano);
     }
+
+    @Override
+    public void fichaTecnica() {
+        System.out.println("Focus: " + cor + ", " + portas + " portas, " + cavalos + " cavalos, ano " + ano + ", cilindros: " + cilindros + ", valor: R$" + valor);
+    }
 }
