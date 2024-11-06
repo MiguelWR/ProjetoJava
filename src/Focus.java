@@ -1,5 +1,8 @@
 public class Focus extends Carro{
-    public Focus(int portas, String cor, int cavalos, int ano, int cilindros, double valor) {
-        super(portas, cor, cavalos, ano, cilindros, valor);
+    public Focus(String cor, int ano, double valor) {
+        super(4, cor, 175, ano, 3, valor);
+    }
+    public void exibirDetalhes() {
+        System.out.println("Focus: " + cor + ", ano " + ano);
     }
 }

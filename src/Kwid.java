@@ -1,5 +1,9 @@
 public class Kwid extends Carro{
-    public Kwid(int portas, String cor, int cavalos, int ano, int cilindros, double valor) {
-        super(portas, cor, cavalos, ano, cilindros, valor);
+    public Kwid(String cor, int ano, double valor) {
+        super(4, cor, 65, ano, 3, valor);
+    }
+    @Override
+    public void exibirDetalhes() {
+        System.out.println("Kwid: " + cor + ", ano " + ano);
     }
 }

@@ -1,5 +1,9 @@
 public class Chevette extends Carro {
-    public Chevette(int portas, String cor, int cavalos, int ano, int cilindros, double valor) {
-        super(portas, cor, cavalos, ano, cilindros, valor);
+    public Chevette(String cor, int ano, double valor) {
+        super(2, cor, 60, ano, 4, valor);
+    }
+    @Override
+    public void exibirDetalhes() {
+        System.out.println("Chevette: " + cor + ", ano " + ano);
     }
 }

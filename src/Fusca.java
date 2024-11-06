@@ -3,7 +3,6 @@ public class Fusca extends Carro {
         super(2, cor, 60, ano, 4, valor);
     }
 
-    @Override
     public void exibirDetalhes() {
         System.out.println("Fusca Clássico: " + cor + ", ano " + ano);
     }

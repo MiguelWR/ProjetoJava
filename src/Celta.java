@@ -1,5 +1,10 @@
-public class Celta extends Carro{
-    public Celta(int portas, String cor, int cavalos, int ano, int cilindros, double valor) {
-        super(portas, cor, cavalos, ano, cilindros, valor);
+public class Celta extends Carro {
+    public Celta(String cor, int ano, double valor) {
+        super(2, cor, 77, ano, 4, valor);
+    }
+
+    @Override
+    public void exibirDetalhes() {
+        System.out.println("Celta: " + cor + ", ano " + ano);
     }
 }

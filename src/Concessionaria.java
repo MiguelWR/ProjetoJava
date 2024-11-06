@@ -32,13 +32,9 @@ public class Concessionaria {
             compra.transferencia();
             cliente.setSaldo(cliente.getSaldo() - carro.getValor());
             System.out.println("Compra realizada com sucesso.");
-        } else {
+        } else if(cliente.getSaldo() <= carro.getValor()) {
             System.out.println("Saldo insuficiente.");
+            System.out.println("Compra não concluída.");
         }
-    }
-
-    // Método polimórfico
-    public void finalizarCompra(Compra compra) {
-        compra.situacao();
     }
 }

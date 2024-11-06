@@ -1,5 +1,9 @@
 public class Kombi extends Carro{
-    public Kombi(int portas, String cor, int cavalos, int ano, int cilindros, double valor) {
-        super(portas, cor, cavalos, ano, cilindros, valor);
+    public Kombi(String cor, int ano, double valor) {
+        super(3, cor, 78, ano, 4, valor);
+    }
+    @Override
+    public void exibirDetalhes() {
+        System.out.println("Kombi: " + cor + ", ano " + ano);
     }
 }
