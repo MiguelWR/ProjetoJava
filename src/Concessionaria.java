@@ -23,14 +23,13 @@ public class Concessionaria {
     public void setLucro(double lucro) { this.lucro = lucro; }
     public void setCnpj(String cnpj) { this.cnpj = cnpj; }
 
-    public void realizarCompra(Cliente cliente, Carro carro, Compra compra) {
+    public void realizarCompra(Cliente cliente, Carro carro, Compra compra) throws SaldoInsuficienteException {
         if (cliente.getSaldo() >= carro.getValor()) {
             compra.transferencia();
             cliente.setSaldo(cliente.getSaldo() - carro.getValor());
-            System.out.println("Compra realizada com sucesso.");
-        } else if(cliente.getSaldo() <= carro.getValor()) {
-            System.out.println("Saldo insuficiente.");
-            System.out.println("Compra não concluída.");
+            System.out.println("Compra realizada com sucesso para o carro\n");
+        } else {
+            throw new SaldoInsuficienteException("\nSaldo insuficiente para realizar a compra do carro ");
         }
     }
 }

@@ -1,7 +1,7 @@
 public class CompraCartao extends Compra {
     @Override
     public void transferencia() {
-        System.out.println("Pagamento realizado por transferência bancária.");
+        System.out.println("\nPagamento realizado por transferência bancária.");
     }
     @Override
     public void debito() {
