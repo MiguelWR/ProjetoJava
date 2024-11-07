@@ -34,7 +34,7 @@ public class Main {
         System.out.println("Ficha técnica dos carros da concessionária " + concessionaria.getNome() + ":\n");
 
         for (Carro carro : carros) {
-            carro.fichaTecnica();
+            System.out.println(carro.fichaTecnica());
         }
 
         System.out.println("\n==========================================================================================================================\n");
