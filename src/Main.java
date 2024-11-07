@@ -24,12 +24,28 @@ public class Main {
         carros.add(kwid);
         carros.add(sandero);
 
+        System.out.println("\n==========================================================================================================================\n");
+        System.out.println("Carros disponíveis na concessionária " + concessionaria.getNome() + ":\n");
         for (Carro carro : carros) {
             carro.exibirDetalhes();
         }
-        System.out.println("=============================================================");
+
+        System.out.println("\n==========================================================================================================================\n");
+        System.out.println("Ficha técnica dos carros da concessionária " + concessionaria.getNome() + ":\n");
+
         for (Carro carro : carros) {
             carro.fichaTecnica();
+        }
+
+        System.out.println("\n==========================================================================================================================\n");
+        System.out.println("Realizando compra na " + concessionaria.getNome() + ":");
+
+        CompraCartao compra = new CompraCartao();
+
+        try {
+            concessionaria.realizarCompra(cliente, fusca, compra);
+        } catch (SaldoInsuficienteException e) {
+            System.out.println(e.getMessage());
         }
     }
 }
