@@ -5,11 +5,11 @@ public class Celta extends Carro {
 
     @Override
     public void exibirDetalhes() {
-        System.out.println("Celta: " + cor + ", ano " + ano);
+        System.out.println("Celta: " + getCor() + ", ano " + getAno());
     }
 
     @Override
-    public void fichaTecnica() {
-        System.out.println("Celta: " + cor + ", " + portas + " portas, " + cavalos + " cavalos, ano " + ano + ", cilindros: " + cilindros + ", valor: R$" + valor);
+    public String fichaTecnica() {
+        return "Celta: " + getCor() + ", " + getPortas() + " portas, " + getCavalos() + " cavalos, ano " + getAno() + ", cilindros: " + getCilindros() + ", valor: R$" + getValor();
     }
 }
