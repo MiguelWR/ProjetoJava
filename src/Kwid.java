@@ -1,14 +1,16 @@
-public class Kwid extends Carro{
+public class Kwid extends Carro {
     public Kwid(String cor, int ano, double valor) {
         super(4, cor, 65, ano, 3, valor);
     }
+
     @Override
     public void exibirDetalhes() {
-        System.out.println("Kwid: " + cor + ", ano " + ano);
+        System.out.println("Kwid: " + getCor() + ", ano " + getAno());
     }
 
     @Override
-    public void fichaTecnica() {
-        System.out.println("Kwid: " + cor + ", " + portas + " portas, " + cavalos + " cavalos, ano " + ano + ", cilindros: " + cilindros + ", valor: R$" + valor);
+    public String fichaTecnica() {
+        return "Kwid: " + getCor() + ", " + getPortas() + " portas, " + getCavalos() + " cavalos, ano " + getAno() + ", cilindros: " + getCilindros() + ", valor: R$" + getValor();
     }
 }
+
