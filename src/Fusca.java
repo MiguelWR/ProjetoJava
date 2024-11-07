@@ -3,12 +3,13 @@ public class Fusca extends Carro {
         super(2, cor, 60, ano, 4, valor);
     }
 
+    @Override
     public void exibirDetalhes() {
-        System.out.println("Fusca Clássico: " + cor + ", ano " + ano);
+        System.out.println("Fusca: " + getCor() + ", ano " + getAno());
     }
 
     @Override
-    public void fichaTecnica() {
-        System.out.println("Fusca: " + cor + ", " + portas + " portas, " + cavalos + " cavalos, ano " + ano + ", cilindros: " + cilindros + ", valor: R$" + valor);
-    }
+    public String fichaTecnica() {
+        return "Fusca: " + getCor() + ", " + getPortas() + " portas, " + getCavalos() + " cavalos, ano " + getAno() + ", cilindros: " + getCilindros() + ", valor: R$" + getValor();    }
 }
+
