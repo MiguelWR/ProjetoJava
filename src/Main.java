@@ -1,7 +1,12 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
         Cliente cliente = new Cliente("Ana", 30, 20000, "123.456.789-00");
         Concessionaria concessionaria = new Concessionaria("AutoLux", 500000, "12.345.678/0001-99", 20);
         ArrayList<Carro> carros = new ArrayList<>();
@@ -47,5 +52,27 @@ public class Main {
         } catch (SaldoInsuficienteException e) {
             System.out.println(e.getMessage());
         }
+
+        System.out.print("Deseja iniciar o leitor de arquivo? (sim/não): ");
+        String resposta = input.nextLine();
+
+        if (resposta.equalsIgnoreCase("sim")) {
+            System.out.println("\n==========================================================================================================================\n");
+            try {
+                File arquivo = new File("C:/Users/leand/Documents/GitHub/ProjetoJava/arquivo.txt");
+                Scanner scanner = new Scanner(arquivo);
+
+                while (scanner.hasNextLine()) {
+                    String linha = scanner.nextLine();
+                    System.out.println(linha);
+                }
+
+                scanner.close();
+            } catch (FileNotFoundException e) {
+                System.out.println("Arquivo não encontrado: " + e.getMessage());
+            }
+        }
+
+        input.close();
     }
 }
