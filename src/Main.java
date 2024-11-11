@@ -4,75 +4,156 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
+    private static ArrayList<Cliente> clientes = new ArrayList<>();
+    private static Concessionaria concessionaria;
+    private static ArrayList<Carro> carros = new ArrayList<>();
+    private static Scanner input = new Scanner(System.in);
+
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
+        inicializarDados();
 
-        Cliente cliente = new Cliente("Ana", 30, 20000, "123.456.789-00");
-        Concessionaria concessionaria = new Concessionaria("AutoLux", 500000, "12.345.678/0001-99", 20);
-        ArrayList<Carro> carros = new ArrayList<>();
+        clientes = Persistencia.carregarClientes("clientes.dat");
 
-        Carro fusca = new Fusca("Azul", 1970, 12000);
-        Carro chevette = new Chevette("Bege", 1978, 22000);
-        Carro celta = new Celta("Preto", 2005, 20000);
-        Carro focus = new Focus("Preto", 2010, 35000);
-        Carro hb20 = new HB20("Branco", 2018, 40000);
-        Carro kombi = new Kombi("Branco", 1980, 38000);
-        Carro kwid = new Kwid("Laranja", 2023, 80000);
-        Carro sandero = new Sandero("Prata", 2012, 33000);
+        exibirMenu();
+    }
 
-        carros.add(fusca);
-        carros.add(chevette);
-        carros.add(celta);
-        carros.add(focus);
-        carros.add(hb20);
-        carros.add(kombi);
-        carros.add(kwid);
-        carros.add(sandero);
+    private static void inicializarDados() {
+        concessionaria = new Concessionaria("AutoLux", 500000, "12.345.678/0001-99", 20);
 
-        System.out.println("\n==========================================================================================================================\n");
-        System.out.println("Carros disponíveis na concessionária " + concessionaria.getNome() + ":\n");
-        for (Carro carro : carros) {
-            carro.exibirDetalhes();
-        }
+        carros.add(new Fusca("Azul", 1970, 12000));
+        carros.add(new Chevette("Bege", 1978, 22000));
+        carros.add(new Celta("Preto", 2005, 20000));
+        carros.add(new Focus("Preto", 2010, 35000));
+        carros.add(new HB20("Branco", 2018, 40000));
+        carros.add(new Kombi("Branco", 1980, 38000));
+        carros.add(new Kwid("Laranja", 2023, 80000));
+        carros.add(new Sandero("Prata", 2012, 33000));
+    }
 
-        System.out.println("\n==========================================================================================================================\n");
-        System.out.println("Ficha técnica dos carros da concessionária " + concessionaria.getNome() + ":\n");
+    private static void exibirMenu() {
+        int escolha;
+        do {
+            System.out.println("\n========= Menu de Funcionalidades =========");
+            System.out.println("1. Cadastrar novo cliente");
+            System.out.println("2. Exibir todos os clientes");
+            System.out.println("3. Realizar compra de carro");
+            System.out.println("4. Exibir carros disponíveis");
+            System.out.println("5. Exibir ficha técnica dos carros");
+            System.out.println("6. Leitor de arquivo");
+            System.out.println("7. Sair");
+            System.out.print("Escolha uma opção: ");
+            escolha = input.nextInt();
+            input.nextLine();
 
-        for (Carro carro : carros) {
-            System.out.println(carro.fichaTecnica());
-        }
+            switch (escolha) {
+                case 1:
+                    cadastrarNovoCliente();
+                    break;
+                case 2:
+                    exibirClientes();
+                    break;
+                case 3:
+                    realizarCompra();
+                    break;
+                case 4:
+                    exibirCarros();
+                    break;
+                case 5:
+                    exibirFichaTecnica();
+                    break;
+                case 6:
+                    leitorArquivo();
+                    break;
+                case 7:
+                    System.out.println("Fechando programa");
+                    break;
+                default:
+                    System.out.println("Opção inválida.");
+            }
+        } while (escolha != 7);
+    }
 
-        System.out.println("\n==========================================================================================================================\n");
-        System.out.println("Realizando compra na " + concessionaria.getNome() + ":");
+    private static void cadastrarNovoCliente() {
+        System.out.print("Nome do cliente: ");
+        String nome = input.nextLine();
+        System.out.print("Idade do cliente: ");
+        int idade = input.nextInt();
+        System.out.print("Saldo do cliente: ");
+        double saldo = input.nextDouble();
+        input.nextLine();
+        System.out.print("CPF do cliente: ");
+        String cpf = input.nextLine();
 
+        Cliente cliente = new Cliente(nome, idade, saldo, cpf);
+        clientes.add(cliente);
+        System.out.println("Cliente cadastrado com sucesso!");
+    }
+
+    private static void realizarCompra() {
+        exibirClientes();
+        System.out.print("Escolha o índice do cliente que deseja realizar a compra: ");
+        int clienteIndex = input.nextInt();
+
+        exibirCarros();
+        System.out.print("Escolha o índice do carro para compra: ");
+        int carroIndex = input.nextInt();
+
+        Cliente cliente = clientes.get(clienteIndex);
+        Carro carro = carros.get(carroIndex);
         CompraCartao compra = new CompraCartao();
 
         try {
-            concessionaria.realizarCompra(cliente, fusca, compra);
+            concessionaria.realizarCompra(cliente, carro, compra);
         } catch (SaldoInsuficienteException e) {
             System.out.println(e.getMessage());
         }
+    }
 
-        System.out.print("Deseja iniciar o leitor de arquivo? (sim/não): ");
-        String resposta = input.nextLine();
-
-        if (resposta.equalsIgnoreCase("sim")) {
-            System.out.println("\n==========================================================================================================================\n");
-            try {
-                File arquivo = new File("C:/Users/leand/Documents/GitHub/ProjetoJava/arquivo.txt");
-                Scanner scanner = new Scanner(arquivo);
-
-                while (scanner.hasNextLine()) {
-                    String linha = scanner.nextLine();
-                    System.out.println(linha);
-                }
-
-                scanner.close();
-            } catch (FileNotFoundException e) {
-                System.out.println("Arquivo não encontrado: " + e.getMessage());
-            }
+    private static void exibirClientes() {
+        System.out.println("\nClientes cadastrados:\n");
+        for (int i = 0; i < clientes.size(); i++) {
+            Cliente cliente = clientes.get(i);
+            System.out.println("["+i+"] . Nome: " + cliente.getNome() + ", Idade: " + cliente.getIdade() + ", CPF: " + cliente.getCpf() + ", Saldo: R$ " + cliente.getSaldo());
         }
+    }
 
-        input.close();
+    private static void exibirCarros() {
+        System.out.println("\nCarros disponíveis na concessionária " + concessionaria.getNome() + ":\n");
+        for (int i = 0; i < carros.size(); i++) {
+            Carro carro = carros.get(i);
+            System.out.println("["+i+"] . " + carro.getClass().getSimpleName() + " - Cor: " + carro.getCor() + ", Ano: " + carro.getAno() + ", Valor: R$ " + carro.getValor());
+        }
+    }
+
+    private static void exibirFichaTecnica() {
+        System.out.println("\nFicha técnica dos carros da concessionária " + concessionaria.getNome() + ":\n");
+        for (Carro carro : carros) {
+            System.out.println(carro.fichaTecnica());
+        }
+    }
+
+    private static void salvarClientes() {
+        Persistencia.salvarClientes(clientes, "clientes.dat");
+        System.out.println("Lista de clientes salva com sucesso!");
+    }
+
+    private static void leitorArquivo() {
+        String caminhoArquivo = "C:/Users/leand/Documents/GitHub/ProjetoJava/arquivo.txt";
+
+        try {
+            File arquivo = new File(caminhoArquivo);
+            Scanner scanner = new Scanner(arquivo);
+
+            while (scanner.hasNextLine()) {
+                String linha = scanner.nextLine();
+                System.out.println(linha);
+            }
+
+            scanner.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Arquivo não encontrado: " + e.getMessage());
+        }
     }
 }
+
+
