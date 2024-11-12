@@ -25,7 +25,6 @@ public class Carro {
 
     public void setPortas(int portas) { this.portas = portas; }
     public void setCor(String cor) { this.cor = cor; }
-    public void setCavalos(int cavalos) { this.cavalos = cavalos; }
     public void setAno(int ano) { this.ano = ano; }
     public void setCilindros(int cilindros) { this.cilindros = cilindros; }
     public void setValor(double valor) { this.valor = valor; }
