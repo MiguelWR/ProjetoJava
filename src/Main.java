@@ -103,7 +103,7 @@ public class Main {
         CompraCartao compra = new CompraCartao();
 
         try {
-            concessionaria.realizarCompra(cliente, carro, compra);
+            concessionaria.realizarTransferencia(cliente, carro, compra);
         } catch (SaldoInsuficienteException e) {
             System.out.println(e.getMessage());
         }

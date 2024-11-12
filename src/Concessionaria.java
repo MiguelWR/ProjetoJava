@@ -23,7 +23,7 @@ public class Concessionaria {
     public void setLucro(double lucro) { this.lucro = lucro; }
     public void setCnpj(String cnpj) { this.cnpj = cnpj; }
 
-    public void realizarCompra(Cliente cliente, Carro carro, Compra compra) throws SaldoInsuficienteException {
+    public void realizarTransferencia(Cliente cliente, Carro carro, Compra compra) throws SaldoInsuficienteException {
         if (cliente.getSaldo() >= carro.getValor()) {
             compra.transferencia();
             cliente.setSaldo(cliente.getSaldo() - carro.getValor());
