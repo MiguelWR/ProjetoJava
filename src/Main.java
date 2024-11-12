@@ -73,7 +73,7 @@ public class Main {
                     exibirConcessionaria();
                     break;
                 case 9:
-                    System.out.println("Fechando programa");
+                    System.out.println("\nFechando programa");
                     break;
                 default:
                     System.out.println("Opção inválida.");
@@ -83,6 +83,7 @@ public class Main {
 
 
     private static void cadastrarNovoCliente() {
+        System.out.println("=================================================================\n");
         System.out.print("Nome do cliente: ");
         String nome = input.nextLine();
         System.out.print("Idade do cliente: ");
@@ -97,9 +98,11 @@ public class Main {
         clientes.add(cliente);
         salvarClientes();
         System.out.println("Cliente cadastrado com sucesso!");
+        System.out.println("\n=================================================================");
     }
 
     private static void realizarCompra() {
+        System.out.println("=================================================================\n");
         exibirClientes();
         System.out.print("Escolha o índice do cliente que deseja realizar a compra: ");
         int clienteIndex = input.nextInt();
@@ -118,34 +121,43 @@ public class Main {
         } catch (SaldoInsuficienteException e) {
             System.out.println(e.getMessage());
         }
+        System.out.println("\n=================================================================");
+
     }
 
     private static void exibirClientes() {
+        System.out.println("=================================================================");
         System.out.println("\nClientes cadastrados:\n");
         for (int i = 0; i < clientes.size(); i++) {
             Cliente cliente = clientes.get(i);
             System.out.println("[" + i + "] . Nome: " + cliente.getNome() + ", Idade: " + cliente.getIdade() + ", CPF: " + cliente.getCpf() + ", Saldo: R$ " + cliente.getSaldo());
         }
+        System.out.println("\n=================================================================");
     }
 
     private static void exibirCarros() {
+        System.out.println("=================================================================");
         System.out.println("\nCarros disponíveis na concessionária " + concessionaria.getNome() + ":\n");
         for (int i = 0; i < carros.size(); i++) {
             Carro carro = carros.get(i);
             System.out.println("[" + i + "] . " + carro.getClass().getSimpleName() + " - Cor: " + carro.getCor() + ", Ano: " + carro.getAno() + ", Valor: R$ " + carro.getValor());
         }
+        System.out.println("\n=================================================================");
+
     }
 
     private static void exibirFichaTecnica() {
+        System.out.println("=================================================================");
         System.out.println("\nFicha técnica dos carros da concessionária " + concessionaria.getNome() + ":\n");
         for (Carro carro : carros) {
             System.out.println(carro.fichaTecnica());
         }
+        System.out.println("\n=================================================================");
+
     }
 
     private static void salvarClientes() {
         Persistencia.salvarClientes(clientes, "clientes.dat");
-        System.out.println("\nLista de clientes salva com sucesso!");
     }
 
     private static void leitorArquivo() {
@@ -168,7 +180,7 @@ public class Main {
 
     private static void saldoCliente() {
         exibirClientes();
-        System.out.print("Escolha o índice do cliente para verificar o saldo: ");
+        System.out.print("\nEscolha o índice do cliente para verificar o saldo: ");
         int clienteIndex = input.nextInt();
 
         if (clienteIndex >= 0 && clienteIndex < clientes.size()) {
@@ -179,8 +191,11 @@ public class Main {
         }
     }
     private static void exibirConcessionaria() {
+        System.out.println("=================================================================\n");
         System.out.println("Nome da Concessionária: " + concessionaria.getNome());
         System.out.println("CNPJ: " + concessionaria.getCnpj());
+        System.out.println("\n=================================================================");
+
     }
 }
 
