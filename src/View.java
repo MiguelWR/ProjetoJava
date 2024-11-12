@@ -29,13 +29,6 @@ public class View {
         painel.setLayout(new GridBagLayout());
         painel.setBackground(Color.DARK_GRAY);
 
-        JTextArea textArea = new JTextArea();
-        textArea.setEditable(false);
-        textArea.setFont(new Font("Cambria", Font.BOLD, 22));
-        textArea.setForeground(Color.WHITE);
-        textArea.setBackground(Color.DARK_GRAY);
-        textArea.setBounds(20, 600, 1315, 150);
-
         Carro fusca = new Fusca("Azul", 1970, 12000);
         Carro chevette = new Chevette("Bege", 1978, 22000);
         Carro celta = new Celta("Preto", 2005, 20000);
@@ -49,37 +42,37 @@ public class View {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JButton source = (JButton) e.getSource();
-                Carro selecionado = null;
+                Carro selectedCar = null;
 
-                switch (source.getText()) {
+                switch (source.getActionCommand()) {
                     case "Fusca":
-                        selecionado = fusca;
+                        selectedCar = fusca;
                         break;
                     case "Chevette":
-                        selecionado = chevette;
+                        selectedCar = chevette;
                         break;
                     case "Celta":
-                        selecionado = celta;
+                        selectedCar = celta;
                         break;
                     case "Focus":
-                        selecionado = focus;
+                        selectedCar = focus;
                         break;
                     case "HB20":
-                        selecionado = hb20;
+                        selectedCar = hb20;
                         break;
                     case "Kombi":
-                        selecionado = kombi;
+                        selectedCar = kombi;
                         break;
                     case "Kwid":
-                        selecionado = kwid;
+                        selectedCar = kwid;
                         break;
                     case "Sandero":
-                        selecionado = sandero;
+                        selectedCar = sandero;
                         break;
                 }
 
-                if (selecionado != null) {
-                    textArea.setText(selecionado.fichaTecnica());
+                if (selectedCar != null) {
+                    showCarDetails(selectedCar);
                 }
             }
         };
@@ -99,9 +92,6 @@ public class View {
         addButtonToPanel(painel, "Kwid", showDetails, gbc, 2, 1);
         addButtonToPanel(painel, "Sandero", showDetails, gbc, 3, 1);
 
-        gbc.gridwidth = 4;
-        painel.add(new JScrollPane(textArea), gbc);
-
         frame.add(menuPanel);
         frame.add(painel);
         frame.revalidate();
@@ -110,28 +100,26 @@ public class View {
     }
 
     private static void addButtonToPanel(JPanel panel, String carName, ActionListener listener, GridBagConstraints gbc, int x, int y) {
-
         JLabel label = new JLabel(carName, JLabel.CENTER);
         label.setFont(new Font("Arial", Font.BOLD, 18));
         label.setForeground(Color.WHITE);
         gbc.gridx = x;
         gbc.gridy = y * 2;
         panel.add(label, gbc);
-
         JButton button = new JButton("Detalhes");
         button.setFont(new Font("Arial", Font.PLAIN, 18));
         button.setPreferredSize(new Dimension(100, 40));
-        // mudança da cor do botao com o mouse
+        button.setBackground(Color.lightGray);
+        button.setForeground(Color.black);
+        // muda a cor do botão
         button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 button.setBackground(Color.green);
             }
-
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 button.setBackground(Color.lightGray);
             }
         });
-        button.setForeground(Color.black);
         button.setActionCommand(carName);
         button.addActionListener(listener);
 
@@ -139,4 +127,45 @@ public class View {
         gbc.gridy = y * 2 + 1;
         panel.add(button, gbc);
     }
+
+    private static void showCarDetails(Carro car) {
+        JDialog dialog = new JDialog();
+        dialog.setTitle("Especificações - " + car.getClass().getSimpleName());
+        dialog.setSize(400, 300);
+        dialog.setLocationRelativeTo(null);
+        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        JPanel panel = new JPanel();
+        panel.setBackground(new Color(52, 52, 59));
+        panel.setLayout(new BorderLayout());
+
+        JLabel titleLabel = new JLabel(car.getClass().getSimpleName(), JLabel.CENTER);
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 20));
+        titleLabel.setForeground(Color.WHITE);
+        titleLabel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
+        panel.add(titleLabel, BorderLayout.NORTH);
+
+        JTextArea textArea = new JTextArea();
+        textArea.setEditable(false);
+        textArea.setFont(new Font("Arial", Font.PLAIN, 16));
+        textArea.setBackground(new Color(52, 52, 59));
+        textArea.setForeground(Color.WHITE);
+
+        String detalhes = String.format(
+                "Cor: %s\n" +
+                        "Portas: %d\n" +
+                        "Cavalos: %d\n" +
+                        "Ano: %d\n" +
+                        "Cilindros: %d\n" +
+                        "Valor: R$ %.2f",
+                car.getCor(), car.getPortas(), car.getCavalos(), car.getAno(), car.getCilindros(), car.getValor()
+        );
+        textArea.setText(detalhes);
+
+        panel.add(new JScrollPane(textArea), BorderLayout.CENTER);
+
+        dialog.add(panel);
+        dialog.setVisible(true);
+    }
+
+
 }
