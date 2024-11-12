@@ -18,7 +18,7 @@ public class Main {
     }
 
     private static void inicializarDados() {
-        concessionaria = new Concessionaria("AutoLux", "12.345.678/0001-99");
+        concessionaria = new Concessionaria("AutoLux", 500000, "12.345.678/0001-99", 20);
 
         carros.add(new Fusca("Azul", 1970, 12000));
         carros.add(new Chevette("Bege", 1978, 22000));
@@ -40,7 +40,8 @@ public class Main {
             System.out.println("4. Exibir carros disponíveis");
             System.out.println("5. Exibir ficha técnica dos carros");
             System.out.println("6. Leitor de arquivo");
-            System.out.println("7. Sair");
+            System.out.println("7. Verificar saldo do cliente");  // Nova opção
+            System.out.println("8. Sair");
             System.out.print("Escolha uma opção: ");
             escolha = input.nextInt();
             input.nextLine();
@@ -65,13 +66,17 @@ public class Main {
                     leitorArquivo();
                     break;
                 case 7:
+                    saldoCliente();  
+                    break;
+                case 8:
                     System.out.println("Fechando programa");
                     break;
                 default:
                     System.out.println("Opção inválida.");
             }
-        } while (escolha != 7);
+        } while (escolha != 8);
     }
+
 
     private static void cadastrarNovoCliente() {
         System.out.print("Nome do cliente: ");
@@ -115,7 +120,7 @@ public class Main {
         System.out.println("\nClientes cadastrados:\n");
         for (int i = 0; i < clientes.size(); i++) {
             Cliente cliente = clientes.get(i);
-            System.out.println("["+i+"] . Nome: " + cliente.getNome() + ", Idade: " + cliente.getIdade() + ", CPF: " + cliente.getCpf() + ", Saldo: R$ " + cliente.getSaldo());
+            System.out.println("[" + i + "] . Nome: " + cliente.getNome() + ", Idade: " + cliente.getIdade() + ", CPF: " + cliente.getCpf() + ", Saldo: R$ " + cliente.getSaldo());
         }
     }
 
@@ -123,7 +128,7 @@ public class Main {
         System.out.println("\nCarros disponíveis na concessionária " + concessionaria.getNome() + ":\n");
         for (int i = 0; i < carros.size(); i++) {
             Carro carro = carros.get(i);
-            System.out.println("["+i+"] . " + carro.getClass().getSimpleName() + " - Cor: " + carro.getCor() + ", Ano: " + carro.getAno() + ", Valor: R$ " + carro.getValor());
+            System.out.println("[" + i + "] . " + carro.getClass().getSimpleName() + " - Cor: " + carro.getCor() + ", Ano: " + carro.getAno() + ", Valor: R$ " + carro.getValor());
         }
     }
 
@@ -154,6 +159,19 @@ public class Main {
             scanner.close();
         } catch (FileNotFoundException e) {
             System.out.println("Arquivo não encontrado: " + e.getMessage());
+        }
+    }
+
+    private static void saldoCliente() {
+        exibirClientes();
+        System.out.print("Escolha o índice do cliente para verificar o saldo: ");
+        int clienteIndex = input.nextInt();
+
+        if (clienteIndex >= 0 && clienteIndex < clientes.size()) {
+            Cliente cliente = clientes.get(clienteIndex);
+            cliente.verificarSaldo();
+        } else {
+            System.out.println("Índice inválido.");
         }
     }
 }
