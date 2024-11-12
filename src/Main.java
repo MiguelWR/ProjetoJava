@@ -86,6 +86,7 @@ public class Main {
 
         Cliente cliente = new Cliente(nome, idade, saldo, cpf);
         clientes.add(cliente);
+        salvarClientes();
         System.out.println("Cliente cadastrado com sucesso!");
     }
 
@@ -104,6 +105,7 @@ public class Main {
 
         try {
             concessionaria.realizarTransferencia(cliente, carro, compra);
+            salvarClientes();
         } catch (SaldoInsuficienteException e) {
             System.out.println(e.getMessage());
         }
@@ -134,7 +136,7 @@ public class Main {
 
     private static void salvarClientes() {
         Persistencia.salvarClientes(clientes, "clientes.dat");
-        System.out.println("Lista de clientes salva com sucesso!");
+        System.out.println("\nLista de clientes salva com sucesso!");
     }
 
     private static void leitorArquivo() {
