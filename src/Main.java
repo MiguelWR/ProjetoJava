@@ -40,8 +40,9 @@ public class Main {
             System.out.println("4. Exibir carros disponíveis");
             System.out.println("5. Exibir ficha técnica dos carros");
             System.out.println("6. Leitor de arquivo");
-            System.out.println("7. Verificar saldo do cliente");  // Nova opção
-            System.out.println("8. Sair");
+            System.out.println("7. Verificar saldo do cliente");
+            System.out.println("8. Exibir dados da concessionária");
+            System.out.println("9. Sair");
             System.out.print("Escolha uma opção: ");
             escolha = input.nextInt();
             input.nextLine();
@@ -66,15 +67,18 @@ public class Main {
                     leitorArquivo();
                     break;
                 case 7:
-                    saldoCliente();  
+                    saldoCliente();
                     break;
                 case 8:
+                    exibirConcessionaria();
+                    break;
+                case 9:
                     System.out.println("Fechando programa");
                     break;
                 default:
                     System.out.println("Opção inválida.");
             }
-        } while (escolha != 8);
+        } while (escolha != 9);
     }
 
 
@@ -173,6 +177,10 @@ public class Main {
         } else {
             System.out.println("Índice inválido.");
         }
+    }
+    private static void exibirConcessionaria() {
+        System.out.println("Nome da Concessionária: " + concessionaria.getNome());
+        System.out.println("CNPJ: " + concessionaria.getCnpj());
     }
 }
 
