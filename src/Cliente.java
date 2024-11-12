@@ -24,4 +24,8 @@ public class Cliente implements Serializable {
     public void verificarSaldo() {
         System.out.println("Seu saldo é: " + saldo);
     }
+    @Override
+    public String toString() {
+        return "Nome: " + nome + ", Idade: " + idade + ", Saldo: R$" + saldo + ", CPF: " + cpf;
+    }
 }

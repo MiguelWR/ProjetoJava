@@ -12,4 +12,9 @@ public class Celta extends Carro {
     public String fichaTecnica() {
         return "Celta: " + getCor() + ", " + getPortas() + " portas, " + getCavalos() + " cavalos, ano " + getAno() + ", cilindros: " + getCilindros() + ", valor: R$" + getValor();
     }
+    @Override
+    public String toString() {
+        return "Celta: " + cor + ", " + portas + " portas, " + cavalos + " cavalos, " + "ano " + ano + ", cilindros: " + cilindros + ", valor: R$" + valor;
+    }
 }
+

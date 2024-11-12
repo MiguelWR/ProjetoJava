@@ -12,4 +12,9 @@ public class Chevette extends Carro {
     public String fichaTecnica() {
         return "Chevette: " + getCor() + ", " + getPortas() + " portas, " + getCavalos() + " cavalos, ano " + getAno() + ", cilindros: " + getCilindros() + ", valor: R$" + getValor();
     }
+    @Override
+    public String toString() {
+        return "Chevette: " + cor + ", " + portas + " portas, " + cavalos + " cavalos, " + "ano " + ano + ", cilindros: " + cilindros + ", valor: R$" + valor;
+    }
 }
+

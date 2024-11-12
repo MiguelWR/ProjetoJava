@@ -11,4 +11,8 @@ public class HB20 extends Carro{
     @Override
     public String fichaTecnica() {
         return "HB20: " + getCor() + ", " + getPortas() + " portas, " + getCavalos() + " cavalos, ano " + getAno() + ", cilindros: " + getCilindros() + ", valor: R$" + getValor();    }
+    @Override
+    public String toString() {
+        return "HB20: " + cor + ", " + portas + " portas, " + cavalos + " cavalos, " + "ano " + ano + ", cilindros: " + cilindros + ", valor: R$" + valor;
+    }
 }

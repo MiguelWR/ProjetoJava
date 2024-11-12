@@ -11,5 +11,9 @@ public class Kombi extends Carro{
     @Override
     public String fichaTecnica() {
         return "Kombi: " + getCor() + ", " + getPortas() + " portas, " + getCavalos() + " cavalos, ano " + getAno() + ", cilindros: " + getCilindros() + ", valor: R$" + getValor();    }
+    @Override
+    public String toString() {
+        return "Kombi: " + cor + ", " + portas + " portas, " + cavalos + " cavalos, " + "ano " + ano + ", cilindros: " + cilindros + ", valor: R$" + valor;
+    }
 }
 

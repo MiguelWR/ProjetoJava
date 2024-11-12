@@ -36,4 +36,8 @@ public class Carro {
     public String fichaTecnica() {
         return "Carro: " + cor + ", " + portas + " portas, " + cavalos + " cavalos, ano " + ano + ", cilindros: " + cilindros + ", valor: R$" + valor;
     }
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + ": " + "Cor: " + cor + ", Ano: " + ano + ", Valor: R$" + valor;
+    }
 }

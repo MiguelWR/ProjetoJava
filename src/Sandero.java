@@ -11,4 +11,9 @@ public class Sandero extends Carro{
     @Override
     public String fichaTecnica() {
         return "Sandero: " + getCor() + ", " + getPortas() + " portas, " + getCavalos() + " cavalos, ano " + getAno() + ", cilindros: " + getCilindros() + ", valor: R$" + getValor();    }
+    @Override
+    public String toString() {
+        return "Fusca: " + cor + ", " + portas + " portas, " + cavalos + " cavalos, " + "ano " + ano + ", cilindros: " + cilindros + ", valor: R$" + valor;
     }
+}
+

@@ -12,4 +12,9 @@ public class Focus extends Carro{
     public String fichaTecnica() {
         return "Focus: " + getCor() + ", " + getPortas() + " portas, " + getCavalos() + " cavalos, ano " + getAno() + ", cilindros: " + getCilindros() + ", valor: R$" + getValor();
     }
+    @Override
+    public String toString() {
+        return "Focus: " + cor + ", " + portas + " portas, " + cavalos + " cavalos, " + "ano " + ano + ", cilindros: " + cilindros + ", valor: R$" + valor;
+    }
 }
+
