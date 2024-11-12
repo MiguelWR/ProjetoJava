@@ -18,7 +18,7 @@ public class Main {
     }
 
     private static void inicializarDados() {
-        concessionaria = new Concessionaria("AutoLux", 500000, "12.345.678/0001-99", 20);
+        concessionaria = new Concessionaria("AutoLux", "12.345.678/0001-99");
 
         carros.add(new Fusca("Azul", 1970, 12000));
         carros.add(new Chevette("Bege", 1978, 22000));
