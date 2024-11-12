@@ -127,19 +127,19 @@ public class View {
         gbc.gridy = y * 2 + 1;
         panel.add(button, gbc);
     }
-
     private static void showCarDetails(Carro car) {
         JDialog dialog = new JDialog();
         dialog.setTitle("Especificações - " + car.getClass().getSimpleName());
-        dialog.setSize(400, 300);
+        dialog.setSize(450, 400);
         dialog.setLocationRelativeTo(null);
         dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+
         JPanel panel = new JPanel();
         panel.setBackground(new Color(52, 52, 59));
         panel.setLayout(new BorderLayout());
 
         JLabel titleLabel = new JLabel(car.getClass().getSimpleName(), JLabel.CENTER);
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 20));
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
         titleLabel.setForeground(Color.WHITE);
         titleLabel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
         panel.add(titleLabel, BorderLayout.NORTH);
@@ -149,6 +149,7 @@ public class View {
         textArea.setFont(new Font("Arial", Font.PLAIN, 16));
         textArea.setBackground(new Color(52, 52, 59));
         textArea.setForeground(Color.WHITE);
+        textArea.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 
         String detalhes = String.format(
                 "Cor: %s\n" +
@@ -163,9 +164,50 @@ public class View {
 
         panel.add(new JScrollPane(textArea), BorderLayout.CENTER);
 
+        JButton buyButton = new JButton("Comprar");
+        buyButton.setFont(new Font("Arial", Font.BOLD, 16));
+        buyButton.setBackground(new Color(76, 175, 80));
+        buyButton.setForeground(Color.WHITE);
+        buyButton.setFocusPainted(false);
+        buyButton.setPreferredSize(new Dimension(120, 40));
+        buyButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                showPurchaseConfirmation();
+            }
+        });
+
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setBackground(new Color(52, 52, 59));
+        buttonPanel.add(buyButton);
+        panel.add(buttonPanel, BorderLayout.SOUTH);
+
         dialog.add(panel);
         dialog.setVisible(true);
     }
+
+    private static void showPurchaseConfirmation() {
+        JDialog confirmationDialog = new JDialog();
+        confirmationDialog.setTitle("Confirmação de Compra");
+        confirmationDialog.setSize(350, 200);
+        confirmationDialog.setLocationRelativeTo(null);
+        confirmationDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+
+        JPanel confirmationPanel = new JPanel();
+        confirmationPanel.setBackground(new Color(52, 52, 59));
+        confirmationPanel.setLayout(new BorderLayout());
+        JLabel confirmationLabel = new JLabel("Compra realizada com sucesso!", JLabel.CENTER);
+        confirmationLabel.setFont(new Font("Arial", Font.BOLD, 18));
+        confirmationLabel.setForeground(Color.WHITE);
+
+        confirmationLabel.setBorder(BorderFactory.createEmptyBorder(30, 0, 30, 0));
+        confirmationPanel.add(confirmationLabel, BorderLayout.CENTER);
+
+        confirmationDialog.add(confirmationPanel);
+        confirmationDialog.setVisible(true);
+    }
+
+
 
 
 }
