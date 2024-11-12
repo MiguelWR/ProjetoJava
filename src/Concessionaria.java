@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class Concessionaria {
     private String nome;
     private double lucro;
@@ -7,6 +5,7 @@ public class Concessionaria {
     private int estoque;
 
     public Concessionaria(String nome, double lucro, String cnpj, int estoque) {
+    public Concessionaria(String nome, String cnpj) {
         this.nome = nome;
         this.lucro = lucro;
         this.cnpj = cnpj;
@@ -25,11 +24,3 @@ public class Concessionaria {
 
     public void realizarTransferencia(Cliente cliente, Carro carro, Compra compra) throws SaldoInsuficienteException {
         if (cliente.getSaldo() >= carro.getValor()) {
-            compra.transferencia();
-            cliente.setSaldo(cliente.getSaldo() - carro.getValor());
-            System.out.println("Compra realizada com sucesso para o carro\n");
-        } else {
-            throw new SaldoInsuficienteException("\nSaldo insuficiente para realizar a compra do carro ");
-        }
-    }
-}
