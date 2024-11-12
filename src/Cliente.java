@@ -19,10 +19,7 @@ public class Cliente implements Serializable {
     public double getSaldo() { return saldo; }
     public String getCpf() { return cpf; }
 
-    public void setNome(String nome) { this.nome = nome; }
-    public void setIdade(int idade) { this.idade = idade; }
     public void setSaldo(double saldo) { this.saldo = saldo; }
-    public void setCpf(String cpf) { this.cpf = cpf; }
 
     public void verificarSaldo() {
         System.out.println("Seu saldo é: " + saldo);
